@@ -3,7 +3,7 @@ const express = require('express');
 // Added apollo server express. 
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const routes = require('./routes');
+
 
 // Requires typeDefs and resolvers. 
 const { typeDefs, resolvers } = require('./schemas');
@@ -26,11 +26,9 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.use(routes);
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/'));
-});
+// app.get('/', (req, res) => {
+//  res.sendFile(path.join(__dirname, '../client/'));
+// });
 
 // create new instance of an Apollo server with Graphql schema
 const startApolloServer = async (typeDefs, resolvers) => {

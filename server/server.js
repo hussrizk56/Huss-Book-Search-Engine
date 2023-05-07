@@ -3,7 +3,7 @@ const express = require('express');
 // Added apollo server express. 
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const routes = require('./routes');
+// might need to remove const routes = require('./routes');
 
 // Requires typeDefs and resolvers. 
 const { typeDefs, resolvers } = require('./schemas');
@@ -22,11 +22,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // if we're in production, serve client/build as static assets
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
+// if (process.env.NODE_ENV === 'production') {
+ //  app.use(express.static(path.join(__dirname, '../client/build')));
+// }
 
-app.use(routes);
+// app.use(routes);
 
 app.get('/', (req, res) => {
 res.sendFile(path.join(__dirname, '../client/'));
